@@ -55,11 +55,13 @@ public class EnterUserServlets extends HttpServlet {
                     Integer id=user.getId();///////////////////////////////////////////////////////
                     int status =Status.getIntStatus(user.getStatus());
                     if(name.equals(requestDto.getName())&&mail.equals(requestDto.getMail())&&status==1){
+                        session.setAttribute("statusUser", 1);
                         resp.sendRedirect("/magaz");
                         resp.setContentType("text/html;charset=UTF-8");
                         resp.setCharacterEncoding("UTF-8");
                     }
                     if(name.equals(requestDto.getName())&&mail.equals(requestDto.getMail())&&status==2) {
+                        session.setAttribute("statusUser", 2);
                         resp.sendRedirect("/admin");
                         resp.setContentType("text/html;charset=UTF-8");
                         resp.setCharacterEncoding("UTF-8");

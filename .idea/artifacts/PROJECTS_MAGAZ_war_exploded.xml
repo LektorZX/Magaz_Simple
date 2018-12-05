@@ -12,6 +12,7 @@
           <element id="library" level="project" name="postgresql-42.2.1" />
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="tomcat-jdbc" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="PROJECTS_MAGAZ/web/Web" />

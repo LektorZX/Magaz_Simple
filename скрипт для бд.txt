@@ -48,15 +48,26 @@ SELECT * FROM Magaz_Proekt.product;
 DELETE FROM Magaz_Proekt.product WHERE rootid = 'rootid';
 
 SELECT * FROM Magaz_Proekt.Order;
-DELETE FROM Magaz_Proekt.Order WHERE id_order=2;
+DELETE FROM Magaz_Proekt.Order WHERE id_order=17;
 DELETE FROM Magaz_Proekt.backet WHERE id_user=3;
 
 DELETE FROM Magaz_Proekt.Order ;
 DELETE FROM Magaz_Proekt.backet ;
+DELETE FROM Magaz_Proekt.user where id>6 AND id<19;
+SELECT id,name,email,status FROM Magaz_Proekt.user WHERE name=('ПЕТЯ ТЕСТ') AND email=('@mail') AND status =('1');
 
 SELECT us.name AS покупатель,bac.id_order AS номер_заказа,pr.*
 FROM Magaz_Proekt.user us,Magaz_Proekt.backet bac ,Magaz_Proekt.order ord,Magaz_Proekt.product pr
 WHERE bac.id_order=17 AND us.id=bac.id_user AND bac.id_order=ord.id_order and ord.id_product=pr.rootid;
+
+
+
+
+
+SELECT id_order FROM Magaz_Proekt.backet WHERE id_user=(?);
+
+
+
 
 
 
