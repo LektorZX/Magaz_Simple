@@ -12,17 +12,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet ("/root")
+@WebServlet("/root")
 
 public class RootJsp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext()
                 .getRequestDispatcher(JspHelper.getPath("RootJsp"))
-                .forward(req,resp);
+                .forward(req, resp);
         resp.setContentType("text/html;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
     }
@@ -30,24 +31,24 @@ public class RootJsp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String result=req.getParameter("this");
+        String result = req.getParameter("this");
         System.out.println(result);
-
-                if(result.equals("войти")){
-                    getServletContext()
-                            .getRequestDispatcher(JspHelper.getPath("EnterJsp"))//////нужно в магаз
-                            .forward(req,resp);
-                    resp.setContentType("text/html;charset=UTF-8");
-                    resp.setCharacterEncoding("UTF-8");
-                }
-        if(result.equals("регистрация")){
+        HttpSession session = req.getSession();
+        session.setAttribute("statusUser", 0);
+        if (result.equals("войти")) {
             getServletContext()
-                    .getRequestDispatcher(JspHelper.getPath("request-save"))
-                    .forward(req,resp);
+                    .getRequestDispatcher(JspHelper.getPath("EnterJsp"))//////нужно в магаз
+                    .forward(req, resp);
             resp.setContentType("text/html;charset=UTF-8");
             resp.setCharacterEncoding("UTF-8");
         }
-         else {
+        if (result.equals("регистрация")) {
+            getServletContext()
+                    .getRequestDispatcher(JspHelper.getPath("request-save"))
+                    .forward(req, resp);
+            resp.setContentType("text/html;charset=UTF-8");
+            resp.setCharacterEncoding("UTF-8");
+        } else {
             resp.sendRedirect("/root");
         }
     }

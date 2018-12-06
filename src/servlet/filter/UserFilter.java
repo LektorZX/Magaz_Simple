@@ -5,8 +5,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebFilter(urlPatterns = {"/delProduct","/seeUser","/delUser","/AdminNewProduct","/admin","/addUser","/AdminSeeProduct"} )
-public class AdminFilter implements Filter {
+@WebFilter(urlPatterns = {"/magaz","/backet"})
+public class UserFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
@@ -14,13 +14,12 @@ public class AdminFilter implements Filter {
         System.out.println(s);
         if(!s.equals("null")){
             int statusUserInt=(int) Integer.valueOf(s);
-            if(statusUserInt==2){
+            if(statusUserInt==1){
                 filterChain.doFilter(servletRequest,servletResponse );
             }
         }
         else {
             ((HttpServletResponse)servletResponse).sendRedirect("/enter");
         }
-
     }
 }
