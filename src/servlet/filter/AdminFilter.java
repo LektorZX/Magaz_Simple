@@ -17,6 +17,9 @@ public class AdminFilter implements Filter {
             if(statusUserInt==2){
                 filterChain.doFilter(servletRequest,servletResponse );
             }
+            if(statusUserInt==1){
+                ((HttpServletResponse)servletResponse).sendRedirect("/enter");
+            }
         }
         else {
             ((HttpServletResponse)servletResponse).sendRedirect("/enter");

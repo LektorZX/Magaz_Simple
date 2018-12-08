@@ -34,13 +34,9 @@ public class RootJsp extends HttpServlet {
         String result = req.getParameter("this");
         System.out.println(result);
         HttpSession session = req.getSession();
-        session.setAttribute("statusUser", 0);
+        session.setAttribute("statusUser", "null");
         if (result.equals("войти")) {
-            getServletContext()
-                    .getRequestDispatcher(JspHelper.getPath("EnterJsp"))//////нужно в магаз
-                    .forward(req, resp);
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.setCharacterEncoding("UTF-8");
+            resp.sendRedirect("/enter");
         }
         if (result.equals("регистрация")) {
             getServletContext()
@@ -48,8 +44,6 @@ public class RootJsp extends HttpServlet {
                     .forward(req, resp);
             resp.setContentType("text/html;charset=UTF-8");
             resp.setCharacterEncoding("UTF-8");
-        } else {
-            resp.sendRedirect("/root");
         }
     }
 }
